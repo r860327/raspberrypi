@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 #define a function which used to blink GPIO
 def blinkGPIO(io):
     GPIO.output(io, GPIO.HIGH)
-#    timer.sleep(1)
+    timer.sleep(1)
     GPIO.output(io, GPIO.LOW)
 #    timer.sleep(1)
 
