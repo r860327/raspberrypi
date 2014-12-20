@@ -40,14 +40,22 @@ while True:
         data = tcpClientSock.recv(BUFSIZE)
         if not data:
             break
-        if(data == 'w'):
-            blinkGPIO(UP)
-        if(data == 's'):
-            blinkGPIO(DOWN)
-        if(data == 'a'):
-            blinkGPIO(LEFT)
-        if(data == 'd'):
-            blinkGPIO(RIGHT)
+        if(data == 'ud'):
+            GPIO.output(UP, GPIO.HIGH)
+        if(data == 'uu'):
+            GPIO.output(UP, GPIO.LOW)
+        if(data == 'ld'):
+            GPIO.output(LEFT, GPIO.HIGH)
+        if(data == 'lu'):
+            GPIO.output(LEFT, GPIO.LOW)
+        if(data == 'rd'):
+            GPIO.output(RIGHT, GPIO.HIGH)
+        if(data == 'ru'):
+            GPIO.output(RIGHT, GPIO.LOW)
+        if(data == 'dd'):
+            GPIO.output(DOWN, GPIO.HIGH)
+        if(data == 'du'):
+            GPIO.output(DOWN, GPIO.LOW)
         print '[%s] %s' % (ctime(), data)
         tcpClientSock.send('[%s] %s' % (ctime(), data))
     tcpClientSock.close()
