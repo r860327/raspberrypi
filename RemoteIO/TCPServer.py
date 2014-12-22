@@ -17,11 +17,20 @@ UP = 21
 DOWN = 22
 LEFT = 23
 RIGHT = 24
+
+CAM_UP = 11
+CAM_DOWN = 12
+CAM_LEFT = 13
+CAM_RIGHT = 15
 # need to set up every channel which are using as an input or an output
 GPIO.setup(UP, GPIO.OUT)
 GPIO.setup(DOWN, GPIO.OUT)
 GPIO.setup(LEFT, GPIO.OUT)
 GPIO.setup(RIGHT, GPIO.OUT)
+GPIO.setup(CAM_UP, GPIO.OUT)
+GPIO.setup(CAM_DOWN, GPIO.OUT)
+GPIO.setup(CAM_LEFT, GPIO.OUT)
+GPIO.setup(CAM_RIGHT, GPIO.OUT)
 
 #init socket
 HOST = ''
@@ -56,6 +65,22 @@ while True:
             GPIO.output(DOWN, GPIO.HIGH)
         if(data == 'du'):
             GPIO.output(DOWN, GPIO.LOW)
+        if(data == 'udc'):
+            GPIO.output(CAM_UP, GPIO.HIGH)
+        if(data == 'uuc'):
+            GPIO.output(CAM_UP, GPIO.LOW)
+        if(data == 'ldc'):
+            GPIO.output(CAM_LEFT, GPIO.HIGH)
+        if(data == 'luc'):
+            GPIO.output(CAM_LEFT, GPIO.LOW)
+        if(data == 'rdc'):
+            GPIO.output(CAM_RIGHT, GPIO.HIGH)
+        if(data == 'ruc'):
+            GPIO.output(CAM_RIGHT, GPIO.LOW)
+        if(data == 'ddc'):
+            GPIO.output(CAM_DOWN, GPIO.HIGH)
+        if(data == 'duc'):
+            GPIO.output(CAM_DOWN, GPIO.LOW)
         print '[%s] %s' % (ctime(), data)
         tcpClientSock.send('[%s] %s' % (ctime(), data))
     tcpClientSock.close()
